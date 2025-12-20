@@ -1,0 +1,16 @@
+{
+  "is_valid": true,
+  "issues": [
+    {
+      "severity": "warning",
+      "code": "NO_RULES_DEFINED",
+      "message": "Policy has no rules defined",
+      "path": "rules",
+      "suggestion": "Add at least one rule to make the policy effective"
+    }
+  ],
+  "validated_at": "2025-12-20T18:32:14.160036",
+  "policy_id": "fa928ee6-f645-4e8f-9b99-bd6425050d9d",
+  "error_count": 0,
+  "warning_count": 1
+}

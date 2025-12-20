@@ -1,0 +1,25 @@
+{
+  "id": "da72658b-53d8-4f89-a794-81770d392ecc",
+  "user_id": null,
+  "created_at": "2025-12-20T18:07:47.694518",
+  "updated_at": "2025-12-20T18:07:47.696521",
+  "conversation_history": [
+    {
+      "role": "user",
+      "content": "help",
+      "timestamp": "2025-12-20T18:07:47.696521"
+    }
+  ],
+  "policy": {
+    "id": "b0a2996c-0ca9-4c5f-b1e4-5d075aee01e5",
+    "name": "RBAC Policy",
+    "version": "1.0.0",
+    "description": null,
+    "rules": [],
+    "default_decision": "DENY",
+    "created_at": "2025-12-20T18:07:47.696521",
+    "updated_at": "2025-12-20T18:07:47.696521",
+    "created_by": null
+  },
+  "metadata": {}
+}

@@ -1,0 +1,556 @@
+{
+  "cache": {
+    "all_schemas": {
+      "roles": {
+        "roles": [
+          {
+            "name": "admin",
+            "description": "Full system administrator with all permissions",
+            "parent_roles": []
+          },
+          {
+            "name": "operator",
+            "description": "Operational user who can manage resources",
+            "parent_roles": [
+              "viewer"
+            ]
+          },
+          {
+            "name": "viewer",
+            "description": "Read-only access to resources",
+            "parent_roles": []
+          },
+          {
+            "name": "auditor",
+            "description": "Can view and audit all activities",
+            "parent_roles": [
+              "viewer"
+            ]
+          },
+          {
+            "name": "developer",
+            "description": "Can manage development resources",
+            "parent_roles": [
+              "viewer"
+            ]
+          },
+          {
+            "name": "analyst",
+            "description": "Can view and analyze data",
+            "parent_roles": [
+              "viewer"
+            ]
+          },
+          {
+            "name": "manager",
+            "description": "Can manage team resources and approve requests",
+            "parent_roles": [
+              "operator"
+            ]
+          },
+          {
+            "name": "guest",
+            "description": "Limited temporary access",
+            "parent_roles": []
+          }
+        ],
+        "permissions": [
+          {
+            "name": "read",
+            "description": "View resource content"
+          },
+          {
+            "name": "write",
+            "description": "Modify resource content"
+          },
+          {
+            "name": "delete",
+            "description": "Remove resources"
+          },
+          {
+            "name": "create",
+            "description": "Create new resources"
+          },
+          {
+            "name": "list",
+            "description": "List resources"
+          },
+          {
+            "name": "export",
+            "description": "Export resource data"
+          },
+          {
+            "name": "import",
+            "description": "Import resource data"
+          },
+          {
+            "name": "approve",
+            "description": "Approve pending actions"
+          },
+          {
+            "name": "reject",
+            "description": "Reject pending actions"
+          },
+          {
+            "name": "execute",
+            "description": "Execute operations"
+          },
+          {
+            "name": "configure",
+            "description": "Configure settings"
+          },
+          {
+            "name": "audit",
+            "description": "Audit activities"
+          }
+        ],
+        "default_mappings": [
+          {
+            "role": "admin",
+            "permissions": [
+              "read",
+              "write",
+              "delete",
+              "create",
+              "list",
+              "export",
+              "import",
+              "approve",
+              "reject",
+              "execute",
+              "configure",
+              "audit"
+            ],
+            "resources": []
+          },
+          {
+            "role": "operator",
+            "permissions": [
+              "read",
+              "write",
+              "create",
+              "list",
+              "execute"
+            ],
+            "resources": []
+          },
+          {
+            "role": "viewer",
+            "permissions": [
+              "read",
+              "list"
+            ],
+            "resources": []
+          },
+          {
+            "role": "auditor",
+            "permissions": [
+              "read",
+              "list",
+              "audit",
+              "export"
+            ],
+            "resources": []
+          },
+          {
+            "role": "developer",
+            "permissions": [
+              "read",
+              "write",
+              "create",
+              "list",
+              "execute",
+              "configure"
+            ],
+            "resources": []
+          },
+          {
+            "role": "analyst",
+            "permissions": [
+              "read",
+              "list",
+              "export"
+            ],
+            "resources": []
+          },
+          {
+            "role": "manager",
+            "permissions": [
+              "read",
+              "write",
+              "create",
+              "list",
+              "approve",
+              "reject"
+            ],
+            "resources": []
+          },
+          {
+            "role": "guest",
+            "permissions": [
+              "read"
+            ],
+            "resources": []
+          }
+        ]
+      },
+      "resources": {
+        "resources": [
+          {
+            "name": "invoice",
+            "description": "Financial invoices for billing",
+            "supported_actions": [
+              "read",
+              "write",
+              "delete",
+              "create",
+              "list",
+              "export",
+              "approve"
+            ],
+            "attributes": {
+              "amount": "float",
+              "status": "string",
+              "customer_id": "string",
+              "created_date": "datetime"
+            }
+          },
+          {
+            "name": "user_profile",
+            "description": "User account profiles",
+            "supported_actions": [
+              "read",
+              "write",
+              "delete",
+              "create",
+              "list"
+            ],
+            "attributes": {
+              "email": "string",
+              "role": "string",
+              "department": "string",
+              "active": "boolean"
+            }
+          },
+          {
+            "name": "report",
+            "description": "Analytics and business reports",
+            "supported_actions": [
+              "read",
+              "create",
+              "list",
+              "export",
+              "delete"
+            ],
+            "attributes": {
+              "type": "string",
+              "generated_at": "datetime",
+              "format": "string"
+            }
+          },
+          {
+            "name": "payment",
+            "description": "Payment transactions",
+            "supported_actions": [
+              "read",
+              "create",
+              "list",
+              "approve",
+              "reject"
+            ],
+            "attributes": {
+              "amount": "float",
+              "currency": "string",
+              "status": "string",
+              "method": "string"
+            }
+          },
+          {
+            "name": "order",
+            "description": "Customer orders",
+            "supported_actions": [
+              "read",
+              "write",
+              "delete",
+              "create",
+              "list",
+              "approve",
+              "reject"
+            ],
+            "attributes": {
+              "total": "float",
+              "status": "string",
+              "customer_id": "string",
+              "items_count": "integer"
+            }
+          },
+          {
+            "name": "product",
+            "description": "Product catalog items",
+            "supported_actions": [
+              "read",
+              "write",
+              "delete",
+              "create",
+              "list",
+              "import",
+              "export"
+            ],
+            "attributes": {
+              "name": "string",
+              "price": "float",
+              "category": "string",
+              "stock": "integer"
+            }
+          },
+          {
+            "name": "customer",
+            "description": "Customer accounts",
+            "supported_actions": [
+              "read",
+              "write",
+              "delete",
+              "create",
+              "list",
+              "export"
+            ],
+            "attributes": {
+              "name": "string",
+              "email": "string",
+              "tier": "string",
+              "lifetime_value": "float"
+            }
+          },
+          {
+            "name": "audit_log",
+            "description": "System audit logs",
+            "supported_actions": [
+              "read",
+              "list",
+              "export",
+              "audit"
+            ],
+            "attributes": {
+              "action": "string",
+              "user_id": "string",
+              "timestamp": "datetime",
+              "resource": "string"
+            }
+          },
+          {
+            "name": "configuration",
+            "description": "System configuration settings",
+            "supported_actions": [
+              "read",
+              "write",
+              "configure"
+            ],
+            "attributes": {
+              "key": "string",
+              "value": "string",
+              "category": "string"
+            }
+          },
+          {
+            "name": "dashboard",
+            "description": "Analytics dashboards",
+            "supported_actions": [
+              "read",
+              "write",
+              "create",
+              "delete",
+              "list"
+            ],
+            "attributes": {
+              "name": "string",
+              "owner": "string",
+              "shared": "boolean"
+            }
+          }
+        ],
+        "global_actions": [
+          "read",
+          "write",
+          "delete",
+          "create",
+          "list"
+        ]
+      },
+      "context": {
+        "attributes": [
+          {
+            "name": "environment",
+            "type": "enum",
+            "description": "Deployment environment",
+            "allowed_values": [
+              "production",
+              "staging",
+              "development",
+              "testing"
+            ],
+            "default_value": "production"
+          },
+          {
+            "name": "time_of_day",
+            "type": "enum",
+            "description": "Time period of the day",
+            "allowed_values": [
+              "morning",
+              "afternoon",
+              "evening",
+              "night",
+              "business_hours",
+              "off_hours"
+            ],
+            "default_value": "business_hours"
+          },
+          {
+            "name": "day_of_week",
+            "type": "enum",
+            "description": "Day of the week",
+            "allowed_values": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday",
+              "sunday",
+              "weekday",
+              "weekend"
+            ],
+            "default_value": "weekday"
+          },
+          {
+            "name": "ip_range",
+            "type": "string",
+            "description": "IP address range (CIDR notation)",
+            "allowed_values": null,
+            "default_value": null
+          },
+          {
+            "name": "country",
+            "type": "string",
+            "description": "Country code (ISO 3166-1 alpha-2)",
+            "allowed_values": null,
+            "default_value": null
+          },
+          {
+            "name": "region",
+            "type": "enum",
+            "description": "Geographic region",
+            "allowed_values": [
+              "us-east",
+              "us-west",
+              "eu-west",
+              "eu-central",
+              "asia-pacific",
+              "global"
+            ],
+            "default_value": "global"
+          },
+          {
+            "name": "device_type",
+            "type": "enum",
+            "description": "Type of device making the request",
+            "allowed_values": [
+              "desktop",
+              "mobile",
+              "tablet",
+              "api",
+              "service"
+            ],
+            "default_value": "desktop"
+          },
+          {
+            "name": "authentication_method",
+            "type": "enum",
+            "description": "How the user authenticated",
+            "allowed_values": [
+              "password",
+              "sso",
+              "mfa",
+              "api_key",
+              "oauth",
+              "certificate"
+            ],
+            "default_value": "password"
+          },
+          {
+            "name": "mfa_verified",
+            "type": "boolean",
+            "description": "Whether MFA was verified",
+            "allowed_values": null,
+            "default_value": false
+          },
+          {
+            "name": "session_age_minutes",
+            "type": "integer",
+            "description": "Age of the current session in minutes",
+            "allowed_values": null,
+            "default_value": 0
+          },
+          {
+            "name": "request_rate",
+            "type": "integer",
+            "description": "Number of requests in the last minute",
+            "allowed_values": null,
+            "default_value": 0
+          },
+          {
+            "name": "risk_score",
+            "type": "float",
+            "description": "Calculated risk score (0.0 - 1.0)",
+            "allowed_values": null,
+            "default_value": 0.0
+          },
+          {
+            "name": "department",
+            "type": "string",
+            "description": "User's department",
+            "allowed_values": null,
+            "default_value": null
+          },
+          {
+            "name": "team",
+            "type": "string",
+            "description": "User's team",
+            "allowed_values": null,
+            "default_value": null
+          },
+          {
+            "name": "resource_owner",
+            "type": "boolean",
+            "description": "Whether the user owns the resource",
+            "allowed_values": null,
+            "default_value": false
+          },
+          {
+            "name": "is_sensitive",
+            "type": "boolean",
+            "description": "Whether the resource is marked as sensitive",
+            "allowed_values": null,
+            "default_value": false
+          },
+          {
+            "name": "data_classification",
+            "type": "enum",
+            "description": "Data classification level",
+            "allowed_values": [
+              "public",
+              "internal",
+              "confidential",
+              "restricted"
+            ],
+            "default_value": "internal"
+          }
+        ]
+      },
+      "discovered_at": "2025-12-20T18:07:47.180985"
+    }
+  },
+  "timestamps": {
+    "all_schemas": 1766254067.180985
+  },
+  "saved_at": "2025-12-20T18:07:47.180985"
+}

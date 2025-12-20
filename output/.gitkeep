@@ -1,0 +1,4 @@
+{
+  "message": "Export your policy using the chat interface or API to generate this file.",
+  "instructions": "Run the application and create a policy, then click 'Export Policy' in the sidebar."
+}

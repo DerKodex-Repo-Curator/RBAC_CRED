@@ -1,0 +1,5 @@
+{
+  "message": "This directory stores cached schemas and session data.",
+  "cache_file": "schema_cache.json",
+  "sessions_dir": "sessions/"
+}

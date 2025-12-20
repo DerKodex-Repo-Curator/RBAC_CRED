@@ -1,0 +1,25 @@
+{
+  "id": "4a7fe17e-f06d-44a4-9520-be796a2d29fb",
+  "user_id": null,
+  "created_at": "2025-12-20T18:15:13.248998",
+  "updated_at": "2025-12-20T18:37:04.935998",
+  "conversation_history": [
+    {
+      "role": "user",
+      "content": "list context",
+      "timestamp": "2025-12-20T18:16:25.190830"
+    }
+  ],
+  "policy": {
+    "id": "dc2f3706-51e8-4681-972c-7202703a79bd",
+    "name": "RBAC Policy",
+    "version": "1.0.0",
+    "description": null,
+    "rules": [],
+    "default_decision": "DENY",
+    "created_at": "2025-12-20T18:15:13.628079",
+    "updated_at": "2025-12-20T18:15:13.628079",
+    "created_by": null
+  },
+  "metadata": {}
+}
